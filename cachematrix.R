@@ -16,7 +16,7 @@ makeCacheMatrix <- function(m = matrix()) {
         ## get inverse matrix mi
         getinverse<-function() mi
         
-        ## set inverse matrix mi
+        ## set inverse matrix mi on the global environment (cached)
         setinverse<-function(x) mi<<-x
         
         ## Makes the functions inside the makeCacheMatrix available
@@ -32,7 +32,7 @@ cacheSolve <- function(m, ...) {
         ## Get matrix inverse
         mi <- m$getinverse()
         
-        ## If the inverse matrix is not null we return it (mi) from global environment
+        ## If the inverse matrix is not null we return it (mi) from global environment (cached)
         if(!is.null(mi)) {
                 message("getting cached matrix")
                 return(mi)
