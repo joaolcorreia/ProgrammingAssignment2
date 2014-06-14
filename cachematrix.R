@@ -12,7 +12,7 @@ makeCacheMatrix <- function(m = matrix()) {
                 ## Need to set the object null otherwise cacheSolve wont validate is.null
                 mi <<- NULL
         } 
-
+        
         ## get inverse matrix mi
         getinverse<-function() mi
         
@@ -36,21 +36,17 @@ cacheSolve <- function(m, ...) {
         if(!is.null(mi)) {
                 message("getting cached matrix")
                 return(mi)
-
+                
         } else {
-        
-        ## The inverse is null. We need to calculate it
-        ## Get the main matrix
-        x <- m$get()
-        ## Calculate the inverse matrix
-        inv <- solve(x)%*%x
-        ## Set the inverse matrix
-        m$setinverse(inv)
+                
+                ## The inverse is null. We need to calculate it
+                ## Get the main matrix
+                x <- m$get()
+                ## Calculate the inverse matrix
+                inv <- solve(x)%*%x
+                ## Set the inverse matrix
+                m$setinverse(inv)
                 
         }
         
 }
-
-
-
-
